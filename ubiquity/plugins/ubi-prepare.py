@@ -88,6 +88,17 @@ class PageGtk(PreparePageBase):
             'prepare_foss_disclaimer')
         self.prepare_foss_disclaimer_extra = builder.get_object(
             'prepare_foss_disclaimer_extra_label')
+
+        # Ubuntu for Mobile Development
+        self.prepare_eclipse_adt = builder.get_object(
+            'prepare_eclipse_adt')
+        self.prepare_android_studio = builder.get_object(
+            'prepare_android_studio')
+        self.prepare_tizen_sdk = builder.get_object(
+            'prepare_tizen_sdk')
+        self.prepare_tizen_wearable = builder.get_object(
+            'prepare_tizen_wearable')
+
         self.prepare_power_source = builder.get_object('prepare_power_source')
         if upower.has_battery():
             upower.setup_power_watch(self.prepare_power_source)
@@ -122,6 +133,18 @@ class PageGtk(PreparePageBase):
 
     def get_use_nonfree(self):
         return self.prepare_nonfree_software.get_active()
+
+    def get_use_eclipse_adt(self):
+        return self.prepare_eclipse_adt.get_active()
+
+    def get_use_android_studio(self):
+        return self.prepare_android_studio.get_active()
+
+    def get_use_tizen_sdk(self):
+        return self.prepare_tizen_sdk.get_active()
+
+    def get_use_tizen_wearable(self):
+        return self.prepare_tizen_wearable.get_active()
 
     def plugin_translate(self, lang):
         PreparePageBase.plugin_translate(self, lang)
@@ -271,4 +294,18 @@ class Page(plugin.Plugin):
                     self.preseed(
                         'ubiquity/nonfree_package',
                         self.ui.restricted_package_name)
+
+        if self.ui.get_use_eclipse_adt():
+            with misc.raised_privileges():
+                self.preseed_bool('apt-setup/eclipse_adt', True)
+        if self.ui.get_use_android_studio():
+            with misc.raised_privileges():
+                self.preseed_bool('apt-setup/android_studio', True)
+        if self.ui.get_use_tizen_sdk():
+            with misc.raised_privileges():
+                self.preseed_bool('apt-setup/tizen_sdk', True)
+        if self.ui.get_use_tizen_wearable():
+            with misc.raised_privileges():
+                self.preseed_bool('apt-setup/tizen_wearable', True)
+
         plugin.Plugin.ok_handler(self)

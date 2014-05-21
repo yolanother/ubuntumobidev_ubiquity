@@ -236,6 +236,11 @@ class Install(install_misc.InstallBase):
         else:
             self.install_extras()
 
+        self.install_eclipse_adt()
+        self.install_android_studio()
+        self.install_tizen_sdk()
+        self.install_tizen_wearable()
+
         self.next_region()
         self.db.progress('INFO', 'ubiquity/install/bootloader')
         self.configure_bootloader()
@@ -1225,6 +1230,26 @@ class Install(install_misc.InstallBase):
             self.db.progress('INFO', 'ubiquity/install/nonfree')
             packages = self.db.get('ubiquity/nonfree_package').split()
             self.do_install(packages)
+
+    def install_eclipse_adt(self):
+        if self.db.get('apt-setup/eclipse_adt') == 'true':
+            self.db.progress('INFO', 'ubiquity/install/eclipse_adt')
+            self.do_install(['eclipse-adt'])
+
+    def install_android_studio(self):
+        if self.db.get('apt-setup/android_studio') == 'true':
+            self.db.progress('INFO', 'ubiquity/install/android_studio')
+            self.do_install(['android-studio'])
+
+    def install_tizen_sdk(self):
+        if self.db.get('apt-setup/tizen_sdk') == 'true':
+            self.db.progress('INFO', 'ubiquity/install/tizen_sdk')
+            self.do_install(['tizen-sdk'])
+
+    def install_tizen_wearable(self):
+        if self.db.get('apt-setup/tizen_wearable') == 'true':
+            self.db.progress('INFO', 'ubiquity/install/tizen_wearable')
+            self.do_install(['tizen-wearable-sdk'])
 
     def install_extras(self):
         """Try to install packages requested by installer components."""

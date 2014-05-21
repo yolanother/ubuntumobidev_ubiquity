@@ -188,6 +188,72 @@
                 <property name="position">1</property>
               </packing>
             </child>
+
+            <child>
+              <object class="GtkCheckButton" id="eclipse_adt">
+                <property name="label" translatable="yes">Install Eclipse ADT</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+
+
+            <child>
+              <object class="GtkCheckButton" id="android_studio">
+                <property name="label" translatable="yes">Install Android Studio</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+
+            <child>
+              <object class="GtkCheckButton" id="Tizen SDK">
+                <property name="label" translatable="yes">Install Tizen SDK</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+
+            <child>
+              <object class="GtkCheckButton" id="tizen_wearable">
+                <property name="label" translatable="yes">Install Tizen Wearable SDK</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_action_appearance">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+
           </object>
           <packing>
             <property name="expand">False</property>
